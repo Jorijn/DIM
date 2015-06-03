@@ -17,6 +17,10 @@
 
 div[dim-search-filter] input {
   width: 300px;
+  -webkit-appearance: textfield;
+  border: 0;
+  height: 23px;
+  font: inherit;
 }
 
 dt {
