@@ -63,6 +63,14 @@
               special = 'classType';
             } else if (['dupe', 'duplicate'].indexOf(filterResult) >= 0) {
               special = 'dupe';
+            } else if (['unascended', 'unassended', 'unasscended'].indexOf(filterResult) >= 0) {
+              special = 'unascended';
+            } else if (['ascended', 'assended', 'asscended'].indexOf(filterResult) >= 0) {
+              special = 'ascended';
+            } else if (['locked'].indexOf(filterResult) >= 0) {
+              special = 'locked';
+            } else if (['unlocked'].indexOf(filterResult) >= 0) {
+              special = 'unlocked';
             }
 
             tempFns.push(filterGenerator(filterResult, special));
@@ -146,6 +154,34 @@
           {
             result = function(p, item) {
               return (!item.xpComplete && item.hasXP) || (!item.hasXP);
+            };
+            break;
+          }
+        case 'unascended':
+          {
+            result = function(p, item) {
+              return (!item.hasAscendNode || item.ascended);
+            };
+            break;
+          }
+        case 'ascended':
+          {
+            result = function(p, item) {
+              return (!item.hasAscendNode || !item.ascended);
+            };
+            break;
+          }
+        case 'unlocked':
+          {
+            result = function(p, item) {
+              return (!item.lockable || item.locked);
+            };
+            break;
+          }
+        case 'locked':
+          {
+            result = function(p, item) {
+              return (!item.lockable || !item.locked);
             };
             break;
           }
