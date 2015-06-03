@@ -9,3 +9,5 @@ build/manifest.zip
 
 !do-not-delete.txt
 !build/img/misc/missing_icon.png
+
+.idea
